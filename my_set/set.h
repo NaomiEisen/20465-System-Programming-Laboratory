@@ -19,6 +19,7 @@ typedef struct {
     char setValues[NUM_OF_BYTES];
 } set;
 
+/* setMapping struct */
 typedef struct {
     const char *setName;
     set* setPtr;

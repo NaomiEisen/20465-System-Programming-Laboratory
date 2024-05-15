@@ -4,17 +4,24 @@
 /* global error variable */
 Error globalError = {NO_ERROR};
 
-/* Function for setting error type */
+/**
+ * Sets error type
+ * @param type - error's type
+ */
 void set_error(ErrorType type) {
     globalError.type = type;
 }
 
-/* function that resets error type to NO_ERROR */
+/**
+ * Resets error type to NO_ERROR
+ */
 void clear_error() {
     globalError.type = NO_ERROR;
 }
 
-/* function that prints the corresponding error message */
+/**
+ * Prints the corresponding error message
+ */
 void handle_error() {
     if (globalError.type != NO_ERROR) {
         switch (globalError.type) {

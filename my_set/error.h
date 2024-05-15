@@ -22,12 +22,12 @@ typedef enum {
     TERMINATE
 } ErrorType;
 
-/* initialize error struct */
+/* declare error struct */
 typedef struct {
     ErrorType type;
 } Error;
 
-/* global error variable */
+/* declare global error variable */
 extern Error globalError;
 
 /* function declarations */

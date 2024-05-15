@@ -4,18 +4,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define TABLE_SIZE 29
+#define TABLE_SIZE 30
 
-/* define the structure for a node in the linked list */
-typedef struct {
+
+/* declare the structure for a node in the linked list */
+typedef struct Node {
     int repetition;
-    FILE* fp;
+    char* file_name;
     struct Node* next;
 } Node;
 
-/* define the structure for the hash table */
+/* declare the structure for the hash table */
 typedef struct {
-    struct Node* table[TABLE_SIZE];
+    Node* table[TABLE_SIZE];
 } HashTable;
 
-#endif //HASH_H
+/* declare global HashTable variable */
+extern HashTable global_hash_table;
+
+/* functions declarations */
+void insert(int key, char *file);
+void free_hash_table();
+
+#endif /* HASH_H */

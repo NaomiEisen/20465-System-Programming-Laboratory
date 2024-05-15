@@ -2,6 +2,8 @@
 #include "set.h"
 #include "error.h"
 
+/* TODO : put command mapping to another function*/
+
 /* functions declarations */
 void handle_read_set(char* ptr, size_t maxNumWords);
 void handle_print_set(char* input);
@@ -319,7 +321,7 @@ void handle_stop(char* input, size_t maxNumWords) {
     set_error(TERMINATE);
 
     /* Free memory  */
-    my_free(tokenizedInput, maxNumWords);
+    my_free(tokenizedInput, 0);
 }
 
 /**

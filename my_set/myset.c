@@ -5,7 +5,7 @@
 void controller();
 
 /**
- * Main function - activates the program.
+ * main function - activates the program.
  * @return 0
  */
 int main() {
