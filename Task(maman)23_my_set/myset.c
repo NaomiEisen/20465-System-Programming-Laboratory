@@ -12,7 +12,7 @@ int main() {
     /* Welcome message */
     printf("Welcome to SET program :)\n");
 
-    /* continue to execute until EOF/other error is reached or a manual terminator is encountered. */
+    /* continue to execute until EOF/other error is reached or a manual terminator is encountered */
     while ( globalError.type !=EOF_ERROR &&
             globalError.type !=MEMORY_ALLOCATION_ERROR &&
             globalError.type != TERMINATE) {controller();}

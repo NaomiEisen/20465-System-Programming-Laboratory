@@ -2,8 +2,6 @@
 #include "set.h"
 #include "error.h"
 
-/* TODO : put command mapping to another function*/
-
 /* functions declarations */
 void handle_read_set(char* ptr, size_t maxNumWords);
 void handle_print_set(char* input);
@@ -18,6 +16,7 @@ int is_integer_in_range(char* str);
 void print_result(int setIndex1, int setIndex2 , int setIndexResult);
 void my_free(char **ptr, size_t size);
 int find_set(char* setName);
+int find_command(char* commandName);
 
 /* set global variables */
 set SETA;
@@ -56,8 +55,7 @@ void controller() {
     char command[MAX_COMMAND_CHAR]; /* inputted command name */
     char *input = NULL; /* pointer to inputted line */
     size_t inputSize;
-    int commandIndex = 0; /* the corresponding command's index from commandMapping */
-    int numOfCommands; /* number of commands in commandMapping */
+    int commandIndex; /* the corresponding command's index from commandMapping */
 
     handle_error(); /* print previous error's message */
 
@@ -85,15 +83,10 @@ void controller() {
     printf("\nYou have entered: %s%s\n", command, input);
 
     /* find the corresponding command from commandMapping */
-    numOfCommands = sizeof(commandMapping) / sizeof(commandMapping[0]);
-    while ((commandIndex < numOfCommands) &&
-           strcmp(command, commandMapping[commandIndex]) != 0) {commandIndex++;}
+    commandIndex = find_command(command);
 
-    /* if no command found - throw an error */
-    if ( commandIndex == numOfCommands) {
-        set_error(COMMAND_NAME_ERROR);
-    }
-    else {
+    /* If no errors are encountered, proceed with execution */
+    if (globalError.type == NO_ERROR) {
         switch (commandIndex) {
             case 0: /* read_set */
                 handle_read_set(input, inputSize);
@@ -423,6 +416,30 @@ int is_integer_in_range(char* str) {
 }
 
 /**
+ * Utility function - finds the corresponding command in commandMapping
+ * for the inputted command's name.
+ * @param commandName - the inputted command name
+ * @return the index of the corresponding command in commandMapping
+ */
+int find_command(char* commandName) {
+    int commandIndex = 0; /* iterate trough loop */
+
+    /* find the number of commands */
+    int numOfCommands = sizeof(commandMapping) / sizeof(commandMapping[0]);
+
+    /* find the corresponding command name in commandMapping */
+    while ((commandIndex < numOfCommands) &&
+           strcmp(commandName, commandMapping[commandIndex]) != 0) {commandIndex++;}
+
+    /* if no command found - set an error */
+    if ( commandIndex == numOfCommands)
+        set_error(COMMAND_NAME_ERROR);
+
+    /* return the corresponding index */
+    return commandIndex;
+}
+
+/**
  * Utility function - finds the corresponding set in setMapping
  * for the inputted set's name.
  * @param setName - the inputted set's name
@@ -453,10 +470,12 @@ int find_set(char* setName){
  * @param setIndexResult - index of the third set in the setMappings
  */
 void print_result(int setIndex1, int setIndex2 , int setIndexResult) {
-    printf("The values in the sets after executing the command:\n");
+    printf("The values in the sets after executing the command>>\n");
     print_set(setMappings[setIndex1].setPtr, setMappings[setIndex1].setName);
-    print_set(setMappings[setIndex2].setPtr, setMappings[setIndex2].setName);
-    print_set(setMappings[setIndexResult].setPtr, setMappings[setIndexResult].setName);
+    if (setIndex1 != setIndex2)
+        print_set(setMappings[setIndex2].setPtr, setMappings[setIndex2].setName);
+    if (setIndexResult != setIndex2 && setIndexResult != setIndex1)
+        print_set(setMappings[setIndexResult].setPtr, setMappings[setIndexResult].setName);
 }
 
 /**

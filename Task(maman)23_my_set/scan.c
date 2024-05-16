@@ -6,7 +6,7 @@
 /* functions declarations */
 char *my_strsep (char** strPtr, const char* delim);
 static char* my_realloc(char* ptr, size_t newSize);
-char* trimed_str(const char* str);
+char* trimed_str(char *str);
 void check_memory_allocation(const char *buffer);
 
 /**
@@ -161,15 +161,15 @@ static char* my_realloc(char* ptr, size_t newSize) {
  * @param str - the string to copy
  * @return - a pointer to the str trimmed copy
  */
-char* trimed_str(const char* str) {
+char* trimed_str(char *str) {
     size_t len = strlen(str);
     size_t trimmedLen;
     char* trimmedStr;
-    const char* start = str;
-    const char* end = str + len - 1;
+    char* start = str;
+    char* end = str + len - 1;
 
     /* skip leading spaces */
-    while (*start == ' ') {
+    while (*start == ' ' || *start == '\t') {
         start++;
     }
 
