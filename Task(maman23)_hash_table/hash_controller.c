@@ -1,58 +1,68 @@
-#include "hash.h"
+/* -------------------------------- Includes -------------------------------- */
+#include "hash_table.h"
 #include "error.h"
+#include "hash_controller.h"
+/* --------------------------------------------------------------------------- */
 
-/* functions declarations */
-void read_file(char *file_name);
-char* single_rep(int rep);
-char* last(int flag);
-void print_hash();
-void print_nodes(Node* node);
-
+/* -------------------------------- Functions -------------------------------- */
 /**
- * Executes the program - irritates through the inputted arguments and handles the content
- * insertion. Returns if error occurs.
+ * Executes the program - irritates through the inputted arguments and handles the
+ * content insertion. Returns if error occurs.
  * @param argc - number of arguments
  * @param argv - array of the file names
  */
 void controller(int argc, char* argv[]) {
-    int i = 1; /* index for iterating through loop */
+    HashTable hash_table; /* HashTable to save program's data */
+    int i = 1;            /* index for iterating through loop */
+
+    /* initialize hash table to empty table */
+    initialize_hash_table(&hash_table);
+
+    if (argc < 2 ) { /* no arguments were passed */
+        /* print error message */
+        set_error(&hash_table.error, ILLEGAL_COMMAND_ERROR);
+        handle_error(&hash_table.error);
+        /* free memory */
+        free_hash_table(&hash_table);
+        return; /* return */
+    }
 
     /* read inputted files */
-    while (argc > 1  && global_error.type == NO_ERROR ) {
-        read_file(argv[i]); /* read this file */
+    while (argc > 1  && hash_table.error.type == NO_ERROR ) {
+        read_file(&hash_table, argv[i]); /* read this file */
         i++;
         argc--;
     }
 
     /* if error occurred  */
-    if (global_error.type != NO_ERROR) {
+    if (hash_table.error.type != NO_ERROR) {
         /* print error message and return */
-        handle_error();
-        free_hash_table();
+        handle_error(&hash_table.error);
+        free_hash_table(&hash_table);
         return;
     }
 
     /* print result */
-    print_hash();
+    print_hash(&hash_table);
 
     /* free memory */
-    free_hash_table();
+    free_hash_table(&hash_table);
 }
 
 /**
  * Reads the contents of a specified file and handles the insertion of this
  * data into the hash table.
- * @param file_name - desired file name
+ * @param hash_table - pointer to the hash table
+ * @param file_name - name of the file to be read
  */
-void read_file(char *file_name){
-    FILE* fd; /* the corresponding file */
-    int num; /* variable for reading file's content */
+void read_file(HashTable *hash_table, char *file_name) {
+    FILE* fd; /* file pointer for the file to be read */
+    int num;  /* variable for reading file's content */
 
     /* open file in read mode */
     if (!(fd = fopen(file_name, "r"))) {
         /* if the file fails to open, set an error and return */
-        set_error(CANNOT_OPEN_FILE_ERROR);
-        fclose(fd); /* close the file */
+        set_error(&hash_table->error, CANNOT_OPEN_FILE_ERROR);
         return;
     }
 
@@ -60,13 +70,13 @@ void read_file(char *file_name){
     while (fscanf(fd, "%d", &num) == 1) {
 
         if (num < 0 || num >= TABLE_SIZE ){ /* integer out of bonds */
-            set_error(OUT_OF_RANGE);
+            set_error(&hash_table->error, OUT_OF_RANGE);
             fclose(fd); /* close the file */
             return;
         }
 
         /* insert integer to hash table */
-        insert(num, file_name);
+        insert(hash_table, file_name, num);
     }
 
     /* close the file */
@@ -74,14 +84,21 @@ void read_file(char *file_name){
 }
 
 /**
- * Prints the data stored in the hash table.
+ * Prints the data stored in the given hash table.
+ * @param hash_table - pointer to the hash table
  */
-void print_hash() {
-    int i; /* index for iterating through loop */
+void print_hash(HashTable *hash_table) {
+    int i;             /* index for iterating through loop */
     Node* node = NULL; /* first node, if exists, in the hash table */
 
+    /* validate hash table pointer */
+    if (hash_table == NULL) {
+        return;
+    }
+
+    /* print table's contebt */
     for( i = 0 ; i < TABLE_SIZE; i++) {
-        node = global_hash_table.table[i];
+        node = hash_table->table[i];
         if (node) { /* if node exists */
             printf("\n%d appears in ", i);
             print_nodes(node); /* print the linked list of nodes */
@@ -95,10 +112,11 @@ void print_hash() {
  */
 void print_nodes(Node* node){
     Node* next = NULL; /* next node of current node */
-    int rep; /* repetition attribute of current node */
+    int rep;           /* repetition attribute of current node */
     int last_flag = 0; /* flag indicates the end of linked list */
 
-    while (node) { /* while node exists */
+    /* while node exists */
+    while (node) {
         next = node->next; /* set next */
         rep = node->repetition; /* set the current rep */
 
@@ -111,6 +129,8 @@ void print_nodes(Node* node){
         node = next; /* set node to the next node */
     }
 }
+
+/* ---------------------------- Utility functions ---------------------------- */
 
 /**
  * Utility function for determining the appropriate output format.

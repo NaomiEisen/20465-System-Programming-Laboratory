@@ -1,8 +1,9 @@
 #ifndef ERROR_H
 #define ERROR_H
-
+/* -------------------------------- Includes -------------------------------- */
 #include <stdio.h>
 
+/* ------------------------------- Structures ------------------------------- */
 /* enum for error types */
 typedef enum {
     NO_ERROR,
@@ -12,16 +13,24 @@ typedef enum {
     OUT_OF_RANGE
 } ErrorType;
 
-/* initialize error struct */
+/* error struct */
 typedef struct {
     ErrorType type;
 } Error;
 
-/* global error variable */
-extern Error global_error;
+/* --------------------------- Function Prototypes --------------------------- */
+/**
+ * Sets error type
+ * @param error - pointer to the error
+ * @param type - error's type
+ */
+void set_error(Error *error, ErrorType type);
 
-/* function declarations */
-void set_error(ErrorType type);
-void handle_error();
+/**
+ * Prints the corresponding error message
+ * @param error - pointer to the error
+ */
+void handle_error(Error *error);
 
+/* --------------------------------------------------------------------------- */
 #endif /* ERROR_H */

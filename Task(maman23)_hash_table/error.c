@@ -1,22 +1,23 @@
 #include "error.h"
 
-/* define global error variable */
-Error global_error = {NO_ERROR};
-
 /**
  * Sets error type
+ * @param error - pointer to the error
  * @param type - error's type
  */
-void set_error(ErrorType type) {
-    global_error.type = type;
+void set_error(Error *error, ErrorType type) {
+    if (error != NULL) {
+        error->type = type;
+    }
 }
 
 /**
  * Prints the corresponding error message
+ * @param error - pointer to the error
  */
-void handle_error() {
-    if (global_error.type != NO_ERROR) {
-        switch (global_error.type) {
+void handle_error(Error *error) {
+    if (error->type != NO_ERROR) {
+        switch (error->type) {
             case CANNOT_OPEN_FILE_ERROR:
                 printf("Error: cannot open file.\n");
                 break;
