@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -pedantic -std=c90
+CFLAGS = -Wall -ansi -pedantic -std=c90
 SRC = hash.c hash_controller.c hash_table.c error.c
 OBJ = $(SRC:.c=.o)
 EXEC = hash
