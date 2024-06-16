@@ -1,11 +1,14 @@
+/* -------------------------------- Includes -------------------------------- */
 #include "error.h"
 
+/* -------------------------------- Functions -------------------------------- */
 /**
  * Sets error type
  * @param error - pointer to the error
  * @param type - error's type
  */
 void set_error(Error *error, ErrorType type) {
+    /* validate error pointer */
     if (error != NULL) {
         error->type = type;
     }
@@ -35,3 +38,5 @@ void handle_error(Error *error) {
         }
     }
 }
+/* --------------------------------------------------------------------------- */
+
