@@ -71,9 +71,9 @@ void insert(HashTable *hash_table, char *file, int key) {
 
 
 /**
- * Checks if a node with the same file name and key exists in the given HashTable by examining the head of the linked
- * list at the specified key index. If it exists, updates its repetition count attribute and returns true.
- * Otherwise, returns false.
+ * Checks if a node with the same file name and key exists in the given HashTable by examining the
+ * head of the linked list at the specified key index. If it exists, updates its repetition count
+ * attribute and returns true. Otherwise, returns false.
  * @param hash_table - the hash table
  * @param key - the scanned integer
  * @param file - file name
@@ -81,7 +81,7 @@ void insert(HashTable *hash_table, char *file, int key) {
  */
 int matching_list_head(HashTable *hash_table, char *file, int key) {
     if (hash_table != NULL) {
-        Node* n = hash_table->table[key];
+        Node *n = hash_table->table[key];
         if (n) { /* if node exists */
             if (strcmp(n->file_name, file) == 0) { /* matching file name found */
                 n->repetition++; /* update repetition count */
