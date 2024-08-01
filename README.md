@@ -10,6 +10,6 @@ Topics: Principles of structured programming and C � Universal principles of p
 
 ## Contents
 
-- **'my_set' | Maman 22:** "Group theory calculator".
-- **'hash_table' | Maman 23:** Program that reads integers from multiple files, counts the occurrences of each number, and prints a summary listing each number, the files where it appears, and its count in each file..
+- **my_set | Maman 22:** "Group theory calculator".
+- **hash_table | Maman 23:** Program that reads integers from multiple files, counts the occurrences of each number, and prints a summary listing each number, the files where it appears, and its count in each file..
 
