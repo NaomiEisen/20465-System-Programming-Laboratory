@@ -22,11 +22,11 @@ Topics: Principles of structured programming and C � Universal principles of p
     <th>Description</th>
   </tr>
   <tr>
-    <td><a href="https://github.com/NaomiEisen/20465-System-Programming-Laboratory/tree/main/Task(maman22)_my_set" style="color: #ff5733;">my_set</a></td>
+    <td><a href="https://github.com/NaomiEisen/20465-System-Programming-Laboratory/tree/main/Task(maman22)_my_set" style="color: #bf7eb4;">my_set</a></td>
     <td>"Group theory calculator"</td>
   </tr>
   <tr>
-    <td><a href="https://github.com/NaomiEisen/20465-System-Programming-Laboratory/tree/main/Task(maman22)_my_set" style="color: #ff5733;">hash_table</a></td>
+    <td><a href="https://github.com/NaomiEisen/20465-System-Programming-Laboratory/tree/main/Task(maman22)_my_set" style="color: #bf7eb4;">hash_table</a></td>
     <td>Program that reads integers from multiple files, counts the occurrences of each number, and prints a summary listing each number, the files where it appears, and its count in each file.</td>
   </tr>
 </table>
