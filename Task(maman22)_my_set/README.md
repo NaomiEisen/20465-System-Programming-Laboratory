@@ -6,7 +6,7 @@ A program that functions as an interactive "pocket computer" for performing oper
 ## Components
 
 - **myset:** Contains the main function to run the program, continuing execution until EOF, an error, or a manual termination is encountered.
-- [![myset](https://img.shields.io/badge/component-myset-blue)]()
+-<kbd>**`myset`**</kbd>
 : Contains the main function to run the program, continuing execution until EOF, an error, or a manual termination is encountered.
 
 - **controller:** Controls the program flow by scanning the inputted command line and executing the corresponding instructions.
