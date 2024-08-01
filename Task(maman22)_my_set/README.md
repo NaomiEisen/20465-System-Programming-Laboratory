@@ -1,15 +1,12 @@
-# 20465-System-Programming-Laboratory
+# my_set Program
 
-Welcome to the repository for the 'System Programming Laboratory' course. 
-This repository contains some of the assignments of the course :)
+### Short description:
+A program that functions as an interactive "pocket computer" for performing operations on sets or groups. Commonly referred to as a "group theory calculator" or "set theory calculator."
 
-### Course description:
-The course is based on The C Programming Language (2nd ed.), by B.W. Kernighan and D.M. Ritchie (Prentice Hall, 1988).
+## Components
 
-Topics: Principles of structured programming and C � Universal principles of programming: abstraction, usage of data structures, building code from basic software blocks, using libraries, writing library functions, documentation, using modules, information hiding, developing machine independent software; The Unix operating system � Linux system calls, using service programs and management tolls, writing new service routines.
-
-## Contents
-
-- **my_set | Maman 22:** "Group theory calculator".
-- **hash_table | Maman 23:** Program that reads integers from multiple files, counts the occurrences of each number, and prints a summary listing each number, the files where it appears, and its count in each file..
-
+- **myset:** Contains the main function to run the program, continuing execution until EOF, an error, or a manual termination is encountered.
+- **controller:** Controls the program flow by scanning the inputted command line and executing the corresponding instructions.
+- **scan**: Responsible for tokenizing and parsing the scanned line.
+- **set**: Contains operations on the sets.
+- **errors**: Structures and methods for handling errors in the program.
