@@ -6,7 +6,8 @@ A program that functions as an interactive "pocket computer" for performing oper
 
 ## Components
 
-- **`myset`**: Contains the main function to run the program, continuing execution until EOF, an error, or a manual termination is encountered.
-- **`controller`**: Controls the program flow by scanning the inputted command line and executing the corresponding instructions.
-- **`scan`**: Responsible for tokenizing and parsing the scanned line.
-- **`set`**: Contains operations
+- **`myset`**: Implements the main function to run the program, managing execution until EOF, an error, or manual termination occurs.
+- **`controller`**: Controls the program flow. Parsing command-line inputs and executing corresponding instructions.
+- **`scan`**: Handles the tokenization and parsing of input lines.
+- **`set`**: Manages various set operations.
+- **`errors`**: Provides structures and methods for error handling within the program.
