@@ -12,8 +12,8 @@ Topics: Principles of structured programming and C � Universal principles of p
 
 | Project | Description |
 | ------ | ------ |
-| [my_set](https://github.com/NaomiEisen/20465-System-Programming-Laboratory/tree/main/Task(maman22)_my_set) | bla bla bla |
-| GitHub | [plugins/github/README.md][PlGh] |
+| [my_set](https://github.com/NaomiEisen/20465-System-Programming-Laboratory/tree/main/Task(maman22)_my_set) | "Group theory calculator" |
+| [hash_table](https://github.com/NaomiEisen/20465-System-Programming-Laboratory/tree/main/Task(maman22)_my_set) | Program that reads integers from multiple files, counts the occurrences of each number, and prints a summary listing each number, the files where it appears, and its count in each file. |
 
 - **my_set | Maman 22:** "Group theory calculator".
 - **hash_table | Maman 23:** Program that reads integers from multiple files, counts the occurrences of each number, and prints a summary listing each number, the files where it appears, and its count in each file..
