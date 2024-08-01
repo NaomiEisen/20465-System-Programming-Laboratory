@@ -5,7 +5,7 @@ This program processes a list of files specified via command line arguments. Eac
 
 ## Components
 
-- **hash:** Contains the main function to run the program.
-- **hash_controller:** Controls the program flow by irritates through the inputted arguments and handles the content insertion.
-- **hash_table**: Hash table structure for saving and managing the readed data from the files.
-- **errors**: Structures and methods for handling errors in the program.
+- **`hash`** Contains the main function to run the program.
+- **`hash_controller`** Controls the program flow by irritates through the inputted arguments and handles the content insertion.
+- **`hash_table`** Hash table structure for saving and managing the readed data from the files.
+- **`errors`** Structures and methods for handling errors in the program.
