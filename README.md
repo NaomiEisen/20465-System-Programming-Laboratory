@@ -1,6 +1,6 @@
 # 20465-System-Programming-Laboratory
 
-Welcome to the repository for the 'System Programming Laboratory' course, . 
+Welcome to the repository for the 'System Programming Laboratory' course. 
 This repository contains some of the assignments of the course :)
 
 ### Course description:
