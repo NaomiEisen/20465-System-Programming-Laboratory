@@ -1,5 +1,5 @@
 # my_set Program
- >>  **Graded 100 :)**
+ >  **Graded 100 :)**
 
 ### Short description:
 A program that functions as an interactive "pocket computer" for performing operations on sets or groups. Commonly referred to as a "group theory calculator" or "set theory calculator."
